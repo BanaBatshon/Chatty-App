@@ -13,15 +13,19 @@ class App extends Component {
       currentUser: 'Bob',
       messages: [
         { id: 1,
+          username: 'Bob',
           content:'hi'
         },
         { id: 2,
+          username: 'Bob',
           content:'how'
         },
         { id: 3,
+          username: 'Bob',
           content:'are'
         },
         { id: 4,
+          username: 'Bob',
           content:'you'
         }
       ]

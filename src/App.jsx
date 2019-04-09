@@ -13,7 +13,7 @@ class App extends Component {
       currentUser: 'Bob',
       messages: [
         { id: 1,
-          username: 'Bob',
+          username: 'Anonymous',
           content:'hi'
         },
         { id: 2,
@@ -37,7 +37,7 @@ class App extends Component {
     setTimeout(() => {
       console.log("Simulating incoming message");
       // Add a new message to the list of messages in the data store
-      const newMessage = {id: 5, content: "Hello there!"};
+      const newMessage = {id: 5, username: "Michle", content: "Hello there!"};
       const messages = this.state.messages.concat(newMessage)
       // Update the state of the app component.
       // Calling setState will trigger a call to render() in App and all child components.

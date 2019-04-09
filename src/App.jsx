@@ -2,7 +2,6 @@
 import React, {Component} from 'react';
 import NavBar from './NavBar.jsx';
 import MessagesList from './MessagesList.jsx';
-import Message from './Message.jsx';
 import ChatBar from './ChatBar.jsx';
 
 

@@ -11,11 +11,10 @@ class MessagesList extends Component {
     return <Message key={message.id} content={message.content} />
     })
     return (
-      <div>
-        <div className="message">
+        <main className="messages">
           {displayMessages}
-        </div>
-      </div>
+        </main>
+
     );
   }
 }

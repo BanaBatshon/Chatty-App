@@ -8,8 +8,7 @@ class Message extends Component {
   render () {
     return (
       <div className="message">
-          <span className="message-username">Bob</span>
-          <span className="message-content">{ this.props.content }</span>
+         <span className="message-content">{ this.props.content }</span>
       </div>
     );
   }

@@ -23,11 +23,9 @@ class App extends Component {
     };
 
     this.socket.onmessage = (newMessage) => {
-      console.log("testtttt",newMessage);
       let incomingMessage = JSON.parse(newMessage.data);
       const messages = this.state.messages.concat(incomingMessage)
       this.setState({messages: messages}, function() {
-        console.log(this.state.messages)
       })
       
     }
@@ -53,7 +51,6 @@ class App extends Component {
    }
 
    addUsername = (e) => {
-     console.log("testtt");
       this.setState({currentUser: e.target.value})
    }
 

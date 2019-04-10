@@ -11,24 +11,7 @@ class App extends Component {
     this.state = {
       numUsers: 0,
       currentUser: '',
-      messages: [
-        { id: 1,
-          username: 'Anonymous',
-          content:'hi'
-        },
-        { id: 2,
-          username: 'Bob',
-          content:'how'
-        },
-        { id: 3,
-          username: 'Bob',
-          content:'are'
-        },
-        { id: 4,
-          username: 'Bob',
-          content:'you'
-        }
-      ],
+      messages: [],
       error: ''
     };
     this.socket = new WebSocket("ws://localhost:3001")

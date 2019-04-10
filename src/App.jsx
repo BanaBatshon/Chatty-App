@@ -34,18 +34,17 @@ class App extends Component {
   }
   addNewMessage = (e) => {
     if(e.key === 'Enter' && e.target.value) {
+      let username = '';
       if (this.state.currentUser.length === 0) {
-        const newMessage = {id: this.state.message, username: 'Anonymous', content: e.target.value}
-        const messages = this.state.messages.concat(newMessage)
-        this.setState({messages: messages})
-        this.setState({error: ''})
+        username = 'Anonymous'
       } else {
-        const newMessage = {id: this.state.message, username: this.state.currentUser, content: e.target.value}
-        const messages = this.state.messages.concat(newMessage)
-        this.setState({messages: messages})
-        this.setState({error: ''})
-        e.target.value = '';
+        username = this.state.currentUser
       }
+      const newMessage = {id: this.state.message, username: username, content: e.target.value}
+      const messages = this.state.messages.concat(newMessage)
+      this.setState({messages: messages})
+      this.setState({error: ''})
+      e.target.value = '';
     } else if(e.key === 'Enter') {
       this.setState({error: "Please enter a message to display!"})
     }

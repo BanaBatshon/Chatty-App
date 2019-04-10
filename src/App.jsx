@@ -51,7 +51,9 @@ class App extends Component {
    }
 
    addUsername = (e) => {
+     if(e.key === 'Enter' && e.target.value) {
       this.setState({currentUser: e.target.value})
+     }
    }
 
   render() {

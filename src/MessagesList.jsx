@@ -8,8 +8,8 @@ class MessagesList extends Component {
 
   render () {
     console.log(this.props.messages);
-    const displayMessages = this.props.messages.map(function (message){
-    return <Message key={message.id} username={message.username} content={message.content} />
+    const displayMessages = this.props.messages.map((message, idx ) => {
+    return <Message key={idx} username={message.username} content={message.content} />
     })
     return (
         <main className="messages">

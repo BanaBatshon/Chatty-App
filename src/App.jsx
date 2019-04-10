@@ -4,12 +4,12 @@ import NavBar from './NavBar.jsx';
 import MessagesList from './MessagesList.jsx';
 import ChatBar from './ChatBar.jsx';
 
-
 // Main app component with default props: username and messages array
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      numUsers: 0,
       currentUser: '',
       messages: [
         { id: 1,
@@ -31,7 +31,27 @@ class App extends Component {
       ],
       error: ''
     };
+    this.socket = new WebSocket("ws://localhost:3001")
   }
+
+  componentDidMount() {
+    
+    const userData = {
+      currentUser: this.state.currentUser,
+      messages: this.state.messages
+    }
+    this.socket.onopen = () => {
+      console.log("Connected to server");
+      this.socket.send(JSON.stringify(userData));
+    };
+
+    // this.socket.onmessage = (newMessage) => {
+    //   const messages = this.state.messages.concat(newMessage)
+    //   this.setState({messages: messages})
+    // }
+  }
+
+
 
   addNewMessage = (e) => {
     if(e.key === 'Enter' && e.target.value) {
@@ -41,11 +61,14 @@ class App extends Component {
       } else {
         username = this.state.currentUser
       }
-      const newMessage = {id: this.state.message, username: username, content: e.target.value}
+      const newMessage = {username: username, content: e.target.value}
       const messages = this.state.messages.concat(newMessage)
       this.setState({messages: messages})
       this.setState({error: ''})
+      this.socket.send(JSON.stringify(newMessage))
+
       e.target.value = '';
+
     } else if(e.key === 'Enter') {
       this.setState({error: "Please enter a message to display!"})
     }

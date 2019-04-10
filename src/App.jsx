@@ -18,23 +18,20 @@ class App extends Component {
   }
 
   componentDidMount() {
-    
-    const userData = {
-      currentUser: this.state.currentUser,
-      messages: this.state.messages
-    }
     this.socket.onopen = () => {
       console.log("Connected to server");
-      this.socket.send(JSON.stringify(userData));
     };
 
-    // this.socket.onmessage = (newMessage) => {
-    //   const messages = this.state.messages.concat(newMessage)
-    //   this.setState({messages: messages})
-    // }
+    this.socket.onmessage = (newMessage) => {
+      console.log("testtttt",newMessage);
+      let incomingMessage = JSON.parse(newMessage.data);
+      const messages = this.state.messages.concat(incomingMessage)
+      this.setState({messages: messages}, function() {
+        console.log(this.state.messages)
+      })
+      
+    }
   }
-
-
 
   addNewMessage = (e) => {
     if(e.key === 'Enter' && e.target.value) {
@@ -45,8 +42,6 @@ class App extends Component {
         username = this.state.currentUser
       }
       const newMessage = {username: username, content: e.target.value}
-      const messages = this.state.messages.concat(newMessage)
-      this.setState({messages: messages})
       this.setState({error: ''})
       this.socket.send(JSON.stringify(newMessage))
 

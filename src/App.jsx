@@ -32,10 +32,11 @@ class App extends Component {
       error: ''
     };
   }
+
   addNewMessage = (e) => {
     if(e.key === 'Enter' && e.target.value) {
       let username = '';
-      if (this.state.currentUser.length === 0) {
+      if (!this.state.currentUser.length) {
         username = 'Anonymous'
       } else {
         username = this.state.currentUser
@@ -75,23 +76,7 @@ class App extends Component {
         </div>
       )
     }
-
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 export default App;

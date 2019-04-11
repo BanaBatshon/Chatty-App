@@ -81,12 +81,13 @@ body {
   font-size: 18px;
   font-weight: 500;
 }
+
 .navbar {
   display: flex;
   justify-content: space-between;
   background: rgb(119, 217, 255);
   border-bottom: 1px solid black;
-  height: 80px;
+  height: 60px;
   left: 0;
   padding: 0 10px;
   position: fixed;
@@ -94,26 +95,30 @@ body {
   top: 0;
   color: black;
 }
+
 .navbar-content {
   display: flex;
   justify-content: left;
 }
+
 .navbar-brand {
   color: inherit;
   font-weight: 700;
   font-size: 28px;
   height: 60px;
-  line-height: 80px;
+  line-height: 60px;
   padding: 0 10px;
   text-decoration: none;
 }
+
 .numUsers {
-  line-height: 80px;
+  line-height: 60px;
 }
 
 .logo {
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
+  line-height: 60px;
   padding: 10px;
 }
 

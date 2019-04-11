@@ -56,13 +56,17 @@ class App extends Component {
        let previousName = '';
       if (!this.state.currentUser.length) {
         previousName = 'Anonymous'
+      } else if (this.state.currentUser === e.target.value) {
+        return '';
       } else {
         previousName = this.state.currentUser
       }
       this.setState({currentUser: e.target.value})
       const notification = {content: `${previousName} has changed their name to ${e.target.value}`, type: 'postNotification'}
       this.socket.send(JSON.stringify(notification))
-     }
+     } else if(e.key === 'Enter') {
+      this.setState({currentUser: ''})
+    }
    }
 
   render() {

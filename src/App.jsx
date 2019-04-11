@@ -79,8 +79,6 @@ class App extends Component {
   render() {
     // checks if there is an error, otherwise displays the message
     if (this.state.error.length === 0) {
-      console.log("passed numUsers: ", this.state.numUsers)
-
       return (
         <div>
           <NavBar numUsers={this.state.numUsers} />
@@ -89,7 +87,6 @@ class App extends Component {
         </div>
       );
     } else {
-      console.log("passed numUsers: ", this.state.numUsers)
       return (
         <div>
           <NavBar numUsers={this.state.numUsers} />

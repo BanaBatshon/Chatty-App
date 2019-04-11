@@ -4,7 +4,10 @@ class NavBar extends Component {
   render () {
     return (
       <nav className="navbar">
-      <a href="/" className="navbar-brand">ChatUp</a>
+      <div className='navbar-content'>
+        <img className='logo' src="../Imgs/question-logo.png"/> 
+        <a href="/" className="navbar-brand">Who Said What</a>
+      </div>
     </nav>
     );
   }

@@ -1,5 +1,5 @@
 h1 {
-  color: rgb(6, 121, 167);
+  color: rgb(119, 217, 255);
 }
 
 body {
@@ -7,11 +7,11 @@ body {
   color: black;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  margin: 70px 0;
+  margin: 100px 0;
 }
 
 .chatbar {
-  background: rgb(6, 121, 167);
+  background: rgb(119, 217, 255);
   border-top: 1px solid black;
   bottom: 0;
   display: flex;
@@ -40,13 +40,12 @@ body {
 }
 
 .message {
-  display: flex;
   padding: 5px;
 }
 
 .message.system {
   font-style: italic;
-  padding: 5px 20px;
+  padding: 5px 60px;
 }
 
 .message-content,
@@ -65,31 +64,50 @@ body {
   font-weight: 700;
 }
 
+.notification-content {
+  margin: 5px;
+  float: left;
+  padding: 0 10px;
+  color: rgb(97, 97, 97);
+  font-style: italic;
+}
+
 .error {
-  color: rgb(255, 35, 71);
-  padding: 40px;
+  margin: 5px;
+  float: left;
+  padding: 0 10px;
+  color: rgb(255, 74, 74);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 500;
 }
 .navbar {
-  background: rgb(6, 121, 167);
+  background: rgb(119, 217, 255);
   border-bottom: 1px solid black;
-  height: 60px;
+  height: 80px;
   left: 0;
   padding: 0 10px;
   position: fixed;
   right: 0;
   top: 0;
-  color: rgb(255, 255, 255);
+  color: black;
 }
-
+.navbar-content {
+  display: flex;
+  justify-content: left;
+}
 .navbar-brand {
   color: inherit;
-  display: block;
-  float: left;
   font-weight: 700;
   font-size: 28px;
   height: 60px;
-  line-height: 60px;
+  line-height: 80px;
   padding: 0 10px;
   text-decoration: none;
+}
+.logo {
+  height: 60px;
+  width: 60px;
+  padding: 10px;
 }
 

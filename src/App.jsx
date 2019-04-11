@@ -28,6 +28,7 @@ class App extends Component {
       this.setState({messages: messages})
     }
 
+
     
   }
 
@@ -39,7 +40,7 @@ class App extends Component {
       } else {
         username = this.state.currentUser
       }
-      const newMessage = {username: username, content: e.target.value, type: 'post'}
+      const newMessage = {username: username, content: e.target.value, type: 'postMessage'}
       this.setState({error: ''})
       this.socket.send(JSON.stringify(newMessage))
 
@@ -59,7 +60,7 @@ class App extends Component {
         previousName = this.state.currentUser
       }
       this.setState({currentUser: e.target.value})
-      const notification = {username: e.target.value, content: `${previousName} has changed their name to ${e.target.value}`, type: 'notification'}
+      const notification = {content: `${previousName} has changed their name to ${e.target.value}`, type: 'postNotification'}
       this.socket.send(JSON.stringify(notification))
      }
    }
@@ -78,7 +79,7 @@ class App extends Component {
         <div>
           <NavBar />
           <MessagesList messages={this.state.messages} />
-          <h3 className='error'>Please Enter A Message To Display</h3>
+          <span className='error'>Please Enter A Message To Display</span>
           <ChatBar currentUser = {this.state.currentUser} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />
 
         </div>

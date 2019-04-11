@@ -6,10 +6,11 @@ class Message extends Component {
   }
 
   render () {
+    const contentClass = this.props.type === 'postMessage' ? 'message-content' : 'notification-content'
     return (
       <div className="message">
          <span className="message-username">{ this.props.username }</span>
-         <span className="message-content">{ this.props.content }</span>
+         <span className={contentClass}>{ this.props.content }</span>
       </div>
     );
   }

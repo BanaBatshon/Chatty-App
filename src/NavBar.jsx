@@ -7,6 +7,7 @@ class NavBar extends Component {
       <div className='navbar-content'>
         <img className='logo' src="../Imgs/question-logo.png"/> 
         <a href="/" className="navbar-brand">Who Said What</a>
+        <span className='numUsers'>Logged in Users: {this.props.numUsers}</span>
       </div>
     </nav>
     );

@@ -19,8 +19,9 @@ class App extends Component {
 
   // New message or new username handlers
   addNewMessage = (e) => {
-    if(e.key === 'Enter' && e.target.value) {
-      let username = '';
+    let username = '';
+    if(e.key === 'Enter' && e.target.value.trim()) {
+      // console.log(e.target.value.trim());
       if (!this.state.currentUser.length) {
         username = 'Anonymous'
       } else {
@@ -33,6 +34,7 @@ class App extends Component {
       e.target.value = '';
 
     } else if(e.key === 'Enter') {
+      username = this.state.currentUser
       this.setState({error: "Please enter a message to display!"})
     }
    }
@@ -59,7 +61,7 @@ class App extends Component {
   componentDidMount() {
     this.socket.onopen = () => {
       console.log("Connected to server");
-      this.setState({numUsers: this.state.numUsers + 1}, () => {console.log(this.state.numUsers)
+      this.setState({numUsers: this.state.numUsers + 1}, () => {console.log("numUsers: ",this.state.numUsers)
       }); 
     }
 
@@ -77,17 +79,20 @@ class App extends Component {
   render() {
     // checks if there is an error, otherwise displays the message
     if (this.state.error.length === 0) {
+      console.log("passed numUsers: ", this.state.numUsers)
+
       return (
         <div>
-          <NavBar />
+          <NavBar numUsers={this.state.numUsers} />
           <MessagesList messages={this.state.messages} />
           <ChatBar currentUser={this.state.currentUser} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />
         </div>
       );
     } else {
+      console.log("passed numUsers: ", this.state.numUsers)
       return (
         <div>
-          <NavBar />
+          <NavBar numUsers={this.state.numUsers} />
           <MessagesList messages={this.state.messages} />
           <span className='error'>Please Enter A Message To Display</span>
           <ChatBar currentUser = {this.state.currentUser} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />

@@ -25,10 +25,10 @@ class App extends Component {
     this.socket.onmessage = (newMessage) => {
       let incomingMessage = JSON.parse(newMessage.data);
       const messages = this.state.messages.concat(incomingMessage)
-      this.setState({messages: messages}, function() {
-      })
-      
+      this.setState({messages: messages})
     }
+
+    
   }
 
   addNewMessage = (e) => {
@@ -39,7 +39,7 @@ class App extends Component {
       } else {
         username = this.state.currentUser
       }
-      const newMessage = {username: username, content: e.target.value}
+      const newMessage = {username: username, content: e.target.value, type: 'post'}
       this.setState({error: ''})
       this.socket.send(JSON.stringify(newMessage))
 
@@ -52,7 +52,15 @@ class App extends Component {
 
    addUsername = (e) => {
      if(e.key === 'Enter' && e.target.value) {
+       let previousName = '';
+      if (!this.state.currentUser.length) {
+        previousName = 'Anonymous'
+      } else {
+        previousName = this.state.currentUser
+      }
       this.setState({currentUser: e.target.value})
+      const notification = {username: e.target.value, content: `${previousName} has changed their name to ${e.target.value}`, type: 'notification'}
+      this.socket.send(JSON.stringify(notification))
      }
    }
 

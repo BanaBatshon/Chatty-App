@@ -59,12 +59,18 @@ class App extends Component {
   componentDidMount() {
     this.socket.onopen = () => {
       console.log("Connected to server");
-    };
+      this.setState({numUsers: this.state.numUsers + 1}, () => {console.log(this.state.numUsers)
+      }); 
+    }
 
     this.socket.onmessage = (newMessage) => {
       let incomingMessage = JSON.parse(newMessage.data);
+      if (typeof incomingMessage.numUsers === 'number') {
+        this.setState({numUsers: incomingMessage.numUsers}, () => {console.log(this.state.numUsers)})
+      } else {
       const messages = this.state.messages.concat(incomingMessage)
       this.setState({messages: messages})
+      }
     }
   }
 

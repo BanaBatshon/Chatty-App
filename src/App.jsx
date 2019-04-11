@@ -17,21 +17,7 @@ class App extends Component {
     this.socket = new WebSocket("ws://localhost:3001")
   }
 
-  componentDidMount() {
-    this.socket.onopen = () => {
-      console.log("Connected to server");
-    };
-
-    this.socket.onmessage = (newMessage) => {
-      let incomingMessage = JSON.parse(newMessage.data);
-      const messages = this.state.messages.concat(incomingMessage)
-      this.setState({messages: messages})
-    }
-
-
-    
-  }
-
+  // New message or new username handlers
   addNewMessage = (e) => {
     if(e.key === 'Enter' && e.target.value) {
       let username = '';
@@ -69,7 +55,21 @@ class App extends Component {
     }
    }
 
+  // When the dom is ready (what to do when a user connect or a message is being recieved)
+  componentDidMount() {
+    this.socket.onopen = () => {
+      console.log("Connected to server");
+    };
+
+    this.socket.onmessage = (newMessage) => {
+      let incomingMessage = JSON.parse(newMessage.data);
+      const messages = this.state.messages.concat(incomingMessage)
+      this.setState({messages: messages})
+    }
+  }
+
   render() {
+    // checks if there is an error, otherwise displays the message
     if (this.state.error.length === 0) {
       return (
         <div>

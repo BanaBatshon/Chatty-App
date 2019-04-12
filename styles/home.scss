@@ -73,8 +73,9 @@ body {
 }
 
 .error {
+  display: flex;
+  justify-content: left;
   margin: 5px;
-  float: left;
   padding: 0 10px;
   color: rgb(255, 74, 74);
   font-style: italic;
@@ -113,6 +114,7 @@ body {
 
 .numUsers {
   line-height: 60px;
+  padding: 0 10px;
 }
 
 .logo {

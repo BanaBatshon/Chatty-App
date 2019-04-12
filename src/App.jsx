@@ -21,7 +21,6 @@ class App extends Component {
   addNewMessage = (e) => {
     let username = '';
     if(e.key === 'Enter' && e.target.value.trim()) {
-      // console.log(e.target.value.trim());
       if (!this.state.currentUser.length) {
         username = 'Anonymous'
       } else {
@@ -30,12 +29,14 @@ class App extends Component {
       const newMessage = {username: username, content: e.target.value, type: 'postMessage'}
       this.setState({error: ''})
       this.socket.send(JSON.stringify(newMessage))
-
       e.target.value = '';
 
-    } else if(e.key === 'Enter') {
+    } else if(e.key === 'Enter' && !e.target.value) {
       username = this.state.currentUser
-      this.setState({error: "Please enter a message to display!"})
+   
+      this.setState({
+        error: "Please enter a message to display!"
+      })
     }
    }
 
@@ -52,18 +53,15 @@ class App extends Component {
       this.setState({currentUser: e.target.value})
       const notification = {content: `${previousName} has changed their name to ${e.target.value}`, type: 'postNotification'}
       this.socket.send(JSON.stringify(notification))
+      this.setState({error: ''});
      } else if(e.key === 'Enter') {
       this.setState({currentUser: ''})
+      this.setState({error: ''});
     }
    }
 
   // When the dom is ready (what to do when a user connect or a message is being recieved)
   componentDidMount() {
-    this.socket.onopen = () => {
-      console.log("Connected to server");
-      this.setState({numUsers: this.state.numUsers + 1}); 
-    }
-
     this.socket.onmessage = (newMessage) => {
       let incomingMessage = JSON.parse(newMessage.data);
       if (typeof incomingMessage.numUsers === 'number') {
@@ -77,12 +75,12 @@ class App extends Component {
 
   render() {
     // checks if there is an error, otherwise displays the message
-    if (this.state.error.length === 0) {
+    if (!this.state.error) {
       return (
         <div>
           <NavBar numUsers={this.state.numUsers} />
           <MessagesList messages={this.state.messages} />
-          <ChatBar currentUser={this.state.currentUser} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />
+          <ChatBar currentUser={this.state.currentUser} prevent={(e) => e.preventDefault()} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />
         </div>
       );
     } else {

@@ -74,26 +74,14 @@ class App extends Component {
   }
 
   render() {
-    // checks if there is an error, otherwise displays the message
-    if (!this.state.error) {
-      return (
-        <div>
-          <NavBar numUsers={this.state.numUsers} />
-          <MessagesList messages={this.state.messages} />
-          <ChatBar currentUser={this.state.currentUser} prevent={(e) => e.preventDefault()} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <NavBar numUsers={this.state.numUsers} />
-          <MessagesList messages={this.state.messages} />
-          <span className='error'>Please Enter A Message To Display</span>
-          <ChatBar currentUser = {this.state.currentUser} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />
-
-        </div>
-      )
-    }
+    return (
+      <div>
+        <NavBar numUsers={this.state.numUsers} />
+        <MessagesList messages={this.state.messages} />
+        {this.state.error ?  <span className='error'>Please Enter A Message To Display</span> : ''}
+        <ChatBar currentUser={this.state.currentUser} addNewMessage={(e) => this.addNewMessage(e)} addUsername={(e) => this.addUsername(e)} />
+      </div>
+    );
   }
 }
 

@@ -10,9 +10,9 @@ and can choose to display their name or chat anonymously. The user can also chec
 
 ### Screenshots
 
-!["Screenshot of nav bar"](https://github.com/BanaBatshon/tweeter/blob/master/public/images/Docs/Screen%20Shot%202019-03-24%20at%206.04.23%20PM.png)
-!["Screenshot of chat bar"](https://github.com/BanaBatshon/tweeter/blob/master/public/images/Docs/Screen%20Shot%202019-03-24%20at%206.04.11%20PM.png)
-!["Screenshot of messages area"](https://github.com/BanaBatshon/tweeter/blob/master/public/images/Docs/Screen%20Shot%202019-03-24%20at%206.03.37%20PM.png)
+!["Screenshot of nav bar"](https://github.com/BanaBatshon/Chatty-App/blob/master/Imgs/NavBar.png)
+!["Screenshot of chat bar"](https://github.com/BanaBatshon/Chatty-App/blob/master/Imgs/ChatBar.png)
+!["Screenshot of messages area"](https://github.com/BanaBatshon/Chatty-App/blob/master/Imgs/MsgsArea.png)
 
 ### Getting Started
 

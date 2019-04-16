@@ -15,40 +15,15 @@ and can choose to display their name or chat anonymously. The user can also chec
 !["Screenshot of messages area"](https://github.com/BanaBatshon/Chatty-App/blob/master/Imgs/MsgsArea.png)
 
 ### Getting Started
+1. git clone git@github.com:BanaBatshon/Chatty-App.git 
+2. cd into `/boilerPlate`
+3. Install the dependencies: `npm install`
+4. start the server by running `npm start`
+5. open another terminal window
+6. cd into `/boilerPlate/chatty_server`
+7. start the web socket server by running `npm start`
+8. open http://localhost:3000 on two or more different tabs to be able to chat between two or more users
 
-Clone the boilerplate and create your own git repo.
-
-1. git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-2. cd react-simple-boilerplate
-3. git remote rm origin
-4. git remote add origin [YOUR NEW REPOSITORY]
-5. Manually update your package.json file
-
-
-Install the dependencies and start the server.
-
-1. npm install
-2. npm start
-
-
-start the websocket server in another terminal widnow.
-
-1. npm start => listening on port 3001
-
-Finally open http://localhost:3000 on two or more different tabs to be able to chat between two or more users
-
-
-### Static Files
-
-You can store static files like images, fonts, etc in the `build` folder.
-
-For example, if you copy a file called my_image.png into the build folder you can access it using `http://localhost:3000/build/my_image.png`.
-
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-1. npm run lint
 
 ### Dependencies
 

@@ -24,7 +24,6 @@ and can choose to display their name or chat anonymously. The user can also chec
 7. start the web socket server by running `npm start`
 8. open http://localhost:3000 on two or more different tabs to be able to chat between two or more users
 
-
 ### Dependencies
 
 * React
